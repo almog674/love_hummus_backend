@@ -5,6 +5,7 @@ Author: Hanich 5
 Purpose: Main FastAPI entrypoint.
 """
 from fastapi import FastAPI
+import uvicorn
 
 APP = FastAPI()
 
@@ -14,4 +15,4 @@ def main():
 
 
 if __name__ == '__main__':
-    main()
+    uvicorn.run(APP, host="127.0.0.1", port=8000)
