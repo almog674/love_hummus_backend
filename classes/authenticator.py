@@ -6,12 +6,13 @@ or create new user.
 Date: 13/06/2022
 """
 
-from models.userModel import UserModel
-from utilities.outputMessages import SuccessMessages
+import pymongo
+
 from classes.database_query import DatabaseQuery
 from classes.db_adder import DatabaseAdder
+from models.userModel import UserModel
 from utilities.outputMessages import ErrorMessages
-import pymongo
+from utilities.outputMessages import SuccessMessages
 
 
 class Authenticator:
@@ -38,16 +39,17 @@ class Authenticator:
         :param users_collection: The collection of users.
         :return: Message which tells if the operation was a success
         """
-        # Check user exist
-        user = self.get_user_by_name(users_collection)
-        if self.validate_user(user):
-            if user['password'] != user_credentials['passowrd']:
-                pass
+        user = self.get_user_by_name(users_collection, users_collection)[0]
+        if not self.validate_user(user):
+            return
+
+        if not self.validate_password(user_credentials, user['password']):
+            return
 
         return user
 
     @staticmethod
-    def get_user_by_name(name: str, users_collection: pymongo.collection):
+    def get_user_by_name(name: str, users_collection: pymongo.collection) -> pymongo.cursor:
         """
             :param name: The name of the user we want to get.
             :param users_collection: The collection of users.
@@ -56,12 +58,23 @@ class Authenticator:
         return user
 
     @staticmethod
-    def validate_user(user_to_check: pymongo.cursor):
+    def validate_user(user_to_check: pymongo.cursor) -> bool:
         """
             :param user_to_check: The user we want to validate.
         """
         is_user_valid = True
-        if not user_to_check:
+        if user_to_check.count() == 0:
             print(ErrorMessages.USER_DOES_NOT_EXIST)
             is_user_valid = False
         return is_user_valid
+
+    @staticmethod
+    def validate_password(user_to_check: dict, password_in_database: str) -> bool:
+        """
+            :param user_to_check: The user with the password we want to check.
+            :param password_in_database: The right password.
+        """
+        if user_to_check['password'] == password_in_database:
+            return True
+        else:
+            return False
