@@ -8,7 +8,7 @@ Date: 13/06/2022
 
 import pymongo
 
-from classes.database_query import DatabaseQuery
+from classes.db_query import DatabaseQuery
 from classes.db_adder import DatabaseAdder
 from models.userModel import UserModel
 from utilities.outputMessages import ErrorMessages
