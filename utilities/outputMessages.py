@@ -5,4 +5,16 @@ Purpose: Keeps the output messages the api shows to the user.
 Date: 13/06/2022
 """
 
+class SuccessMessages:
+    """
+    Messages which tells the user his action was a success.
+    """
+    pass
 
+
+class ErrorMessages:
+    """
+    Messages which helps the user understand what he did wrong
+    and fix it
+    """
+    pass
