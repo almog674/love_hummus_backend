@@ -1,7 +1,8 @@
 """
 Name: humusia_model.py
 Author: Hanich 08
-Porpuse: 
+Purpose: A model for holding all the required
+data needed for humusia.
 Date: 13/06/2022
 """
 
