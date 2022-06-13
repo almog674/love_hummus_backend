@@ -20,10 +20,18 @@ class Authenticator:
     def signup(user_credentials: dict):
         """
         :param user_credentials: The name & password of the user.
-        :return:
+        :return: Message which tells if the operation was a success
         """
         # TODO - Add error handling
         UserModel(name=user_credentials['name'], password=user_credentials['password'])
         return SuccessMessages.USER_CREATED
 
 
+    @staticmethod
+    def login(user_credentials: dict):
+        """
+        :param user_credentials: The name & password of the user.
+        :return: Message which tells if the operation was a success
+        """
+        # Uses the DB_query
+        pass
