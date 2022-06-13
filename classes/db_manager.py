@@ -18,7 +18,6 @@ class DBManager:
     Manages a mongo database, let you add, search or update
     data there.
     """
-
     def __init__(self, mongo_url: str):
         self.mongo_client = pymongo.MongoClient(mongo_url)
         self.database = self.mongo_client[DatabaseConstants.DATABASE_NAME]
