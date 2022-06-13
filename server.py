@@ -6,8 +6,10 @@ Purpose: Main FastAPI entrypoint.
 """
 from fastapi import FastAPI
 import uvicorn
+from routers import hummus
 
 APP = FastAPI()
+APP.include_router(hummus.HUMMUS_ROUTES)
 
 
 def main():
