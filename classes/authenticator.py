@@ -28,7 +28,6 @@ class Authenticator:
         :param users_collection: The collection of users.
         :return: Message which tells if the operation was a success
         """
-        # TODO - Add error handling
         user_to_add = UserModel(name=user_credentials['name'], password=user_credentials['password'])
         DatabaseAdder.add_item(user_to_add.dict(), users_collection)
         return SuccessMessages.USER_CREATED
