@@ -14,12 +14,14 @@ class HumusiaModel(BaseModel):
     This is a model for holding all the required
     data needed for humusia.
     """
-    id: uuid.UUID: Field(default_factory=lambda: uuid.uuid4(),
-              description="The unique id of this humusia")
+    id: uuid.UUID = Field(default_factory=lambda: uuid.uuid4(),
+                          description="The unique id of this humusia")
     name: str = Field(max_length=40, description="The name of the humusia")
     city: str = Field(max_length=20,
                       description="The city which the humusia is located")
     owner_id: uuid.UUID = Field(default="Unknown")
     rating_sun: int = 0
     number_of_ratings: int = 0
-    price_class: str = Field(default="medium")
+    price_class: str = Field(default="medium", description="Describes how expensive the hummus, can be low/medium/high")
+    is_kosher: bool = Field(default=False,
+                            description="Determine if the hummus is kosher.")
