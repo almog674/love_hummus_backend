@@ -21,4 +21,4 @@ class UserModel(BaseModel):
                           description="The unique id of this user")
     name: str = Field(max_length=40, description="The name of the user")
     password: str
-    owned_humusion: List[uuid.UUID] = []
+    owned_humusiot: List[uuid.UUID] = []
