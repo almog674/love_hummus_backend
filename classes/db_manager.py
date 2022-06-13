@@ -9,6 +9,7 @@ Date: 13/06/2022
 import pymongo
 
 from utilities.database_constants import DatabaseConstants
+from utilities.database_functions import DBFunctions
 
 
 class DBManager:
@@ -22,3 +23,4 @@ class DBManager:
         self.database = self.mongo_client[DatabaseConstants.DATABASE_NAME]
         self.users_collection = self.database[DatabaseConstants.USERS_COLLECTION_NAME]
         self.humusiot_collection = self.database[DatabaseConstants.HUMUSIOT_COLLECTION_NAME]
+        self.available_functions = DBFunctions.FUNCTIONS_DICT

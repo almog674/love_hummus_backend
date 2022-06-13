@@ -1,3 +1,6 @@
+<<<<<<< HEAD
+from pydantic import BaseModel
+=======
 #!usr/bin/env python
 """
 Name: server.py
@@ -14,3 +17,4 @@ APP.include_router(user.USER_ROUTES)
 
 if __name__ == '__main__':
     uvicorn.run(APP, host="127.0.0.1", port=8000)
+>>>>>>> 9c196fb585d780224b9aaecaa3e9d127513733b7
