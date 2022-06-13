@@ -21,7 +21,7 @@ class HumusiaModel(BaseModel):
     city: str = Field(max_length=20,
                       description="The city which the humusia is located")
     owner_id: uuid.UUID = Field(default="Unknown")
-    rating_sun: int = 0
+    rating_sum: int = 0
     number_of_ratings: int = 0
     price_class: str = Field(default="medium", description="Describes how expensive the hummus, can be low/medium/high")
     is_kosher: bool = Field(default=False,
