@@ -13,4 +13,10 @@ class DatabaseAdder(IDbAdder):
     """
     @staticmethod
     def add_item(item: dict, collection: mongo_collection):
+        """
+        add item to the database
+        :param item:
+        :param collection:
+        :return:
+        """
         collection.insertOne(item)
