@@ -5,11 +5,12 @@ Purpose: Keeps the output messages the api shows to the user.
 Date: 13/06/2022
 """
 
+
 class SuccessMessages:
     """
     Messages which tells the user his action was a success.
     """
-    pass
+    USER_CREATED = "User has created successfuly"
 
 
 class ErrorMessages:
