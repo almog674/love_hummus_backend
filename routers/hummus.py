@@ -2,7 +2,7 @@
 """
 Name: hummus.py
 Author: Hanich 5
-Purpose: Contain all hummus related routes.
+Purpose: Contain all hummus related routers.
 """
 from fastapi import APIRouter, status
 from uuid import UUID
