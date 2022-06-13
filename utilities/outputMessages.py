@@ -11,6 +11,7 @@ class SuccessMessages:
     Messages which tells the user his action was a success.
     """
     USER_CREATED = "User has created successfuly"
+    USER_UPDATED = "User has updated successfuly"
 
 
 class ErrorMessages:
