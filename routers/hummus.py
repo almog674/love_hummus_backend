@@ -20,3 +20,6 @@ async def add_rating_to_hummusia(hummusia_id: UUID, rating_given: int):
     pass
 
 
+@HUMMUS_ROUTES.get("/hummusiot/")
+async def get_hummusia_by_filter(db_filter: dict):
+    pass
