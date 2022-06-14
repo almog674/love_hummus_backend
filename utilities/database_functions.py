@@ -4,7 +4,7 @@ Author: Hanich 02
 Purpose: available functions in dictionary
 Date: 13/06/2022
 """
-from classes.db_updater import DatabaseUpdater
+from classes.database_updater import DatabaseUpdater
 
 
 class DBFunctions:

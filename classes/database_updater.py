@@ -1,5 +1,5 @@
 """
-Name: db_updater.py
+Name: database_updater.py
 Author: Hanich 08
 Purpose: A class for updating data in a Mongodb collection.
 Date: 13/06/2022
