@@ -10,13 +10,13 @@ import pymongo
 
 from utilities.database_constants import DatabaseConstants
 from utilities.database_functions import DBFunctions
+from classes import db_adder, db_updater, db_query
 
 class DBManager:
     """
     Manages a mongo database, let you add, search or update
     data there.
     """
-
     def __init__(self, mongo_url: str):
         self.mongo_client = pymongo.MongoClient(mongo_url)
         self.database = self.mongo_client[DatabaseConstants.DATABASE_NAME]
@@ -26,4 +26,6 @@ class DBManager:
 
     @staticmethod
     def execute_database_function(self, command_name: str, command_arguments: str):
-        pass
+        self._db_adder = db_adder.DatabaseAdder()
+        self._db_updater = db_updater.DatabaseUpdater()
+        self._db_query = db_query.DatabaseQuery()

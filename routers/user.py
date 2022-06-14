@@ -6,6 +6,8 @@ Purpose: Contain all user related routers.
 """
 from fastapi import APIRouter
 from classes.db_manager import DBManager
+from models import userModel
+from server import DB_MANAGER
 
 USER_ROUTES = APIRouter()
 
@@ -16,6 +18,13 @@ async def login(user_credentials: dict):
     results = database_manager.execute_database_function("login", user_credentials)
     return results
 
+
 @USER_ROUTES.post("/user/signup")
 async def signup():
+    async def login(user: userModel.UserModel):
+        pass
+
+
+@USER_ROUTES.post("/user/signup")
+async def sign_up(user: userModel.UserModel):
     pass

@@ -10,10 +10,12 @@ from fastapi import FastAPI
 from classes.db_manager import DBManager
 from utilities.database_constants import DatabaseConstants
 from routers import hummus, user
+from classes import db_manager
 
 APP = FastAPI()
 APP.include_router(hummus.HUMMUS_ROUTES)
 APP.include_router(user.USER_ROUTES)
+DB_MANAGER = db_manager.DBManager("no")  # TODO: add a mongo
 
 DB_MANAGER = DBManager(DatabaseConstants.MONGO_URL)
 
