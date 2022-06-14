@@ -74,7 +74,6 @@ async def get_hummusia_by_filter(db_filter: str):
     Returns an array of all the hummusiot objects (humusia_model.HumusiaModel) which
     stands in the criteria of the filter.
     """
-
-    db_filter = eval(db_filter)
+    db_filter = json.loads(db_filter)
     entries_found = DB_MANAGER._db_query.execute_query(db_filter, DB_MANAGER.humusiot_collection)
     return entries_found
