@@ -11,4 +11,4 @@ class DatabaseFilter(BaseModel):
     """
     A model for the filter received in the body of the request.
     """
-    db_filter: dict
+    mongo_database_filter: dict

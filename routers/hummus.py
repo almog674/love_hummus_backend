@@ -38,8 +38,8 @@ async def add_rating_to_hummusia(hummusia_id: UUID, rating_given: int):
 
 
 @HUMMUS_ROUTES.get("/hummusiot/")
-async def get_hummusia_by_filter(db_filter: filter_model):
+async def get_hummusia_by_filter(db_filter: filter_model.DatabaseFilter):
     """
     Sends the user all hummusiot matching the given filter.
     """
-    return DB_MANAGER._db_query.execute_query(db_filter.db_filter)
+    return DB_MANAGER._db_query.execute_query(db_filter.mongo_database_filter)
