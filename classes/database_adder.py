@@ -19,4 +19,4 @@ class DatabaseAdder(IDbAdder):
         :param collection:
         :return:
         """
-        collection.insertOne(item)
+        collection.insert_one(item)

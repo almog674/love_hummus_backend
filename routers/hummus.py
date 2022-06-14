@@ -4,6 +4,8 @@ Name: hummus.py
 Author: Hanich 5
 Purpose: Contain all hummus related routers.
 """
+import json
+
 from fastapi import APIRouter, status
 from uuid import UUID
 from models import humusia_model, filter_model
@@ -56,8 +58,8 @@ async def add_rating_to_hummusia(hummusia_id: UUID, rating_given: int):
     return UserReturnPrompts.update_prompt
 
 
-@HUMMUS_ROUTES.get("/hummusiot/")
-async def get_hummusia_by_filter(db_filter: filter_model.DatabaseFilter):
+@HUMMUS_ROUTES.get("/hummusiot/{db_filter}")
+async def get_hummusia_by_filter(db_filter: str):
     """
     Get all the hummusiot which stand in the criteria of the db_filter.
 
@@ -74,4 +76,7 @@ async def get_hummusia_by_filter(db_filter: filter_model.DatabaseFilter):
     Returns an array of all the hummusiot objects (humusia_model.HumusiaModel) which
     stands in the criteria of the filter.
     """
-    return DB_MANAGER._db_query.execute_query(db_filter.mongo_database_filter, DB_MANAGER.humusiot_collection)
+
+    db_filter = eval(db_filter)
+    entries_found = DB_MANAGER._db_query.execute_query(db_filter, DB_MANAGER.humusiot_collection)
+    return entries_found
