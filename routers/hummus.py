@@ -4,12 +4,13 @@ Name: hummus.py
 Author: Hanich 5
 Purpose: Contain all hummus related routers.
 """
-import json
+
+from uuid import UUID
 
 from fastapi import APIRouter, status
-from uuid import UUID
-from models import humusia_model, filter_model
+
 from database_manager_init import DB_MANAGER
+from models import humusia_model
 from utilities.consts import HummusRouter, UserReturnPrompts
 
 HUMMUS_ROUTES = APIRouter()
@@ -35,13 +36,13 @@ async def add_hummusia(hummusia: humusia_model.HumusiaModel):
     return UserReturnPrompts.add_prompt
 
 
-@HUMMUS_ROUTES.put("/hummusiot/{hummusia_id}/{rating_given}")
-async def add_rating_to_hummusia(hummusia_id: UUID, rating_given: int):
+@HUMMUS_ROUTES.put("/hummusiot/{hummusia_name}/{rating_given}")
+async def add_rating_to_hummusia(hummusia_name: str, rating_given: int):
     """
     Updates the hummusia fields according to the rating given
     as a path parameter.
 
-    :param hummusia_id: The id of the hummusia we want to rate.
+    :param hummusia_name: The name of the hummusia we want to rate.
     :param rating_given: the rating we want to give to the hummusia
 
     Example:
@@ -49,11 +50,12 @@ async def add_rating_to_hummusia(hummusia_id: UUID, rating_given: int):
 
     Returns a string which tells if the action was a success
     """
-    hummusia = DB_MANAGER._db_query.execute_query({"id": hummusia_id})[HummusRouter.ONE_ID_PER_HUMMUSIA]
-    DB_MANAGER._db_updater.update_item(hummusia_id,
+    hummusia = DB_MANAGER._db_query.execute_query({"name": hummusia_name}, DB_MANAGER.humusiot_collection)[HummusRouter.ONE_ID_PER_HUMMUSIA]
+    DB_MANAGER._db_updater.update_item(hummusia_name,
                                        {"rating_sum": hummusia["rating_sum"] + rating_given,
                                         "number_of_ratings": hummusia[
-                                         "number_of_ratings"] + HummusRouter.INCREMENT_NUMBER_OF_RATINGS})
+                                         "number_of_ratings"] + HummusRouter.INCREMENT_NUMBER_OF_RATINGS},
+                                       DB_MANAGER.humusiot_collection)
 
     return UserReturnPrompts.update_prompt
 

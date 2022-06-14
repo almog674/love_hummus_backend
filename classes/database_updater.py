@@ -17,6 +17,6 @@ class DatabaseUpdater:
     """
 
     @staticmethod
-    def update_item(item_id: UUID, new_values: dict, collection: pymongo.collection) -> str:
-        collection.findOneAndUpdate({"id": item_id}, new_values)
+    def update_item(entry_name: str, new_values: dict, collection: pymongo.collection) -> str:
+        collection.find_one_and_update({"name": entry_name}, new_values)
         return SuccessMessages.USER_UPDATED
