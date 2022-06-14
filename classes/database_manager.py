@@ -1,5 +1,5 @@
 """
-Name: db_manager.py
+Name: database_manager.py
 Author: Hanich 08
 Purpose: Manages a mongo database, let you add, search or update
 data there.
@@ -9,8 +9,7 @@ Date: 13/06/2022
 import pymongo
 
 from utilities.database_constants import DatabaseConstants
-from utilities.database_functions import DBFunctions
-from classes import db_adder, db_updater, db_query
+from classes import database_adder, database_updater, database_query
 
 class DBManager:
     """
@@ -26,6 +25,6 @@ class DBManager:
 
     @staticmethod
     def execute_database_function(self, command_name: str, command_arguments: str):
-        self._db_adder = db_adder.DatabaseAdder()
-        self._db_updater = db_updater.DatabaseUpdater()
-        self._db_query = db_query.DatabaseQuery()
+        self._db_adder = database_adder.DatabaseAdder()
+        self._db_updater = database_updater.DatabaseUpdater()
+        self._db_query = database_query.DatabaseQuery()

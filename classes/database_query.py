@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 """
-Name: db_query.py
+Name: database_query.py
 Author: Hanich 5
 Purpose: Contains the implementation of an object that queries the database.
 """
