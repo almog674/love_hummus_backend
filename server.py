@@ -11,7 +11,7 @@ from classes import database_manager
 
 APP = FastAPI()
 APP.include_router(hummus.HUMMUS_ROUTES)
-APP.include_router(user.USER_ROUTES)
+# APP.include_router(user.USER_ROUTES)
 DB_MANAGER = database_manager.DBManager("no")  # TODO: add a mongo
 
 if __name__ == '__main__':
