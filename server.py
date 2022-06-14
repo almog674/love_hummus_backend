@@ -5,11 +5,11 @@ Author: Hanich 5
 Purpose: Main FastAPI entrypoint.
 """
 import uvicorn
-from classes.database_manager import DBManager
 from fastapi import FastAPI
 
-from utilities.database_constants import DatabaseConstants
+from classes.database_manager import DBManager
 from routers import hummus
+from utilities.database_constants import DatabaseConstants
 
 APP = FastAPI()
 APP.include_router(hummus.HUMMUS_ROUTES)

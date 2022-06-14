@@ -21,10 +21,6 @@ class DBManager:
         self.database = self.mongo_client[DatabaseConstants.DATABASE_NAME]
         self.users_collection = self.database[DatabaseConstants.USERS_COLLECTION_NAME]
         self.humusiot_collection = self.database[DatabaseConstants.HUMUSIOT_COLLECTION_NAME]
-        self.available_functions = DBFunctions.FUNCTIONS_DICT
-
-    @staticmethod
-    def execute_database_function(self, command_name: str, command_arguments: str):
         self._db_adder = database_adder.DatabaseAdder()
         self._db_updater = database_updater.DatabaseUpdater()
         self._db_query = database_query.DatabaseQuery()
