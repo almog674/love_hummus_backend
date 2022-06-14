@@ -6,6 +6,7 @@ Purpose: Contain all hummus related routers.
 """
 from fastapi import APIRouter, status
 from uuid import UUID
+import json
 from models import humusia_model, filter_model
 from database_manager_init import DB_MANAGER
 from utilities.consts import HummusRouter, UserReturnPrompts
@@ -18,7 +19,7 @@ async def add_hummusia(hummusia: humusia_model.HumusiaModel):
     """
     Adds the hummusia received from the body of the request to the database.
     """
-    DB_MANAGER._db_adder.add_item(dict(hummusia), DB_MANAGER.humusiot_collection)
+    DB_MANAGER._db_adder.add_item(hummusia.dict(), DB_MANAGER.humusiot_collection)
     return UserReturnPrompts.add_prompt
 
 
