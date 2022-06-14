@@ -7,7 +7,7 @@ Purpose: Contain all hummus related routers.
 from fastapi import APIRouter, status
 from uuid import UUID
 from models import humusia_model, filter_model
-from server import DB_MANAGER
+from database_manager_init import DB_MANAGER
 from utilities.consts import HummusRouter, UserReturnPrompts
 
 HUMMUS_ROUTES = APIRouter()

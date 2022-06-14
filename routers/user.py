@@ -6,7 +6,7 @@ Purpose: Contain all user related routers.
 """
 from fastapi import APIRouter
 from models import userModel
-from server import DB_MANAGER
+from database_manager_init import DB_MANAGER
 
 USER_ROUTES = APIRouter()
 
