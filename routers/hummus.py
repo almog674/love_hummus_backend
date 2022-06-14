@@ -5,7 +5,7 @@ Author: Hanich 5
 Purpose: Contain all hummus related routers.
 """
 
-from uuid import UUID
+import json
 
 from fastapi import APIRouter, status
 
@@ -39,7 +39,7 @@ async def add_hummusia(hummusia: humusia_model.HumusiaModel):
 @HUMMUS_ROUTES.put("/hummusiot/{hummusia_name}/{rating_given}")
 async def add_rating_to_hummusia(hummusia_name: str, rating_given: int):
     """
-    Updates the hummusia fields according to the rating given
+    Add rating to the hummusia according to the rating given
     as a path parameter.
 
     :param hummusia_name: The name of the hummusia we want to rate.
@@ -50,12 +50,8 @@ async def add_rating_to_hummusia(hummusia_name: str, rating_given: int):
 
     Returns a string which tells if the action was a success
     """
-    hummusia = DB_MANAGER._db_query.execute_query({"name": hummusia_name}, DB_MANAGER.humusiot_collection)[HummusRouter.ONE_ID_PER_HUMMUSIA]
-    DB_MANAGER._db_updater.update_item(hummusia_name,
-                                       {"rating_sum": hummusia["rating_sum"] + rating_given,
-                                        "number_of_ratings": hummusia[
-                                         "number_of_ratings"] + HummusRouter.INCREMENT_NUMBER_OF_RATINGS},
-                                       DB_MANAGER.humusiot_collection)
+    DB_MANAGER._db_updater.update_item(hummusia_name, {"$inc": {"rating_sum": rating_given}}, DB_MANAGER.humusiot_collection)
+    DB_MANAGER._db_updater.update_item(hummusia_name, {"$inc": {"number_of_ratings": 1}}, DB_MANAGER.humusiot_collection)
 
     return UserReturnPrompts.update_prompt
 

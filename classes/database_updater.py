@@ -18,5 +18,7 @@ class DatabaseUpdater:
 
     @staticmethod
     def update_item(entry_name: str, new_values: dict, collection: pymongo.collection) -> str:
-        collection.find_one_and_update({"name": entry_name}, new_values)
+        print(entry_name)
+        print(new_values)
+        collection.update_one({"name": entry_name}, new_values)
         return SuccessMessages.USER_UPDATED
