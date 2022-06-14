@@ -14,9 +14,11 @@ class SuccessMessages:
     USER_UPDATED = "User has updated successfuly"
 
 
+
 class ErrorMessages:
     """
     Messages which helps the user understand what he did wrong
     and fix it
     """
-    pass
+    USER_DOES_NOT_EXIST = "The user you trying to connect to does not exist!"
+    PASSWORD_NOT_MATCH = "The password in incorrect."

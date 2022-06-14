@@ -12,7 +12,8 @@ class DatabaseQuery(database_excuting.IDbQuery):
     """
     Implementation of IDbQuery for mongoDB.
     """
-    def execute_query(self, item: dict, collection: mongo_collection) -> list:
+    @staticmethod
+    def execute_query(item: dict, collection: mongo_collection) -> list:
         """
         :param item: The query itself.
         :param collection: The collection to query.

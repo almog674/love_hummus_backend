@@ -11,7 +11,6 @@ import pymongo
 from utilities.database_constants import DatabaseConstants
 from classes import database_adder, database_updater, database_query
 
-
 class DBManager:
     """
     Manages a mongo database, let you add, search or update
