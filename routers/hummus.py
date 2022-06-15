@@ -13,6 +13,7 @@ from database_manager_init import DB_MANAGER
 from models import humusia_model
 from utilities.consts import HummusRouter, UserReturnPrompts
 
+
 HUMMUS_ROUTES = APIRouter()
 
 

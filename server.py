@@ -12,8 +12,26 @@ from fastapi import FastAPI
 from routers import hummus
 from utilities.database_constants import DatabaseConstants
 
+from fastapi.middleware.cors import CORSMiddleware
+
 APP = FastAPI()
 APP.include_router(hummus.HUMMUS_ROUTES)
+
+
+
+origins = [
+
+    "http://localhost:8000",
+]
+
+APP.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
 
 DB_MANAGER = DBManager(DatabaseConstants.MONGO_URL)
 
