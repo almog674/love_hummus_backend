@@ -17,10 +17,7 @@ from fastapi.middleware.cors import CORSMiddleware
 APP = FastAPI()
 APP.include_router(hummus.HUMMUS_ROUTES)
 
-
-
 origins = [
-
     "http://localhost:8000",
 ]
 
@@ -31,7 +28,6 @@ APP.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 
 DB_MANAGER = DBManager(DatabaseConstants.MONGO_URL)
 

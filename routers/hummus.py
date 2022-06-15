@@ -37,7 +37,7 @@ async def add_hummusia(hummusia: humusia_model.HumusiaModel):
     return UserReturnPrompts.add_prompt
 
 
-@HUMMUS_ROUTES.get("/hummusiot/{hummusia_name}/{rating_given}")
+@HUMMUS_ROUTES.put("/hummusiot/{hummusia_name}/{rating_given}")
 async def add_rating_to_hummusia(hummusia_name: str, rating_given: int):
     """
     Add rating to the hummusia according to the rating given
